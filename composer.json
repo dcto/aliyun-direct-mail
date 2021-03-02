@@ -1,0 +1,31 @@
+{
+    "name": "varimax/aliyun-direct-mail",
+    "description": "Varimax Aliyun Direct Mail",
+    "type": "project",
+    "keywords": [
+        "aliyun",
+        "aliyun-direct-mail",
+        "阿里云邮件推送接口SDK"
+    ],
+    "license": "MIT",
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "homepage": "http://www.varimax.cn",
+    "version": "v1.3",
+    "support": {
+        "issues": "https://github.com/dcto/aliyun-direct-mail/issues",
+        "source": "https://github.com/dcto/aliyun-direct-mail"
+    },
+    "authors": [
+        {
+            "name": "Sem.dc",
+            "email": "sdoz@live.com"
+        }
+    ],
+
+    "autoload": {
+        "psr-4": {
+            "Varimax\\Aliyun\\": "src/"
+        }
+    }
+}
