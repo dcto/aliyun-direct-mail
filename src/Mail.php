@@ -85,24 +85,6 @@ class Mail{
         return $this;
     }
 
-
-    public function to(...$mail)
-    {
-        return $this->mail($mail);
-    }
-
-    /**
-     * set email address
-     * @param mixed $email 
-     * @return $this 
-     */
-    public function mail(...$mail)
-    {
-        $this->mail = $mail;
-        return $this;
-    }
-
-
     /**
      * 邮件标签s
      * @param mixed $tags 
@@ -112,6 +94,30 @@ class Mail{
     {
         $this->tags = $tags;
         return $this;
+    }
+
+    /**
+     * 设定标题
+     * @param mixed|null $title 
+     * @return mixed 
+     */
+    public function title($title = null)
+    {
+        return $this->subject($title);
+    }
+
+    /**
+     * 设定标题
+     * @param mixed|null $subject 
+     * @return mixed 
+     */
+    public function subject($subject = null)
+    {
+       if($subject){
+           $this->subject = $subject;
+           return $this;
+       }
+       return $this->subject;
     }
 
     /**
