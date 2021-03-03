@@ -19,7 +19,7 @@ class Mail{
         'accessKeyId'=>'',
         'accessSecret'=>'',
         'addressType'=>0,//地址类型 0：为随机账号 1：为发信地址
-        'replyToAddress'=>'',//使用管理控制台中配置的回信地址（状态必须是验证通过）。
+        'replyToAddress'=>false,//使用管理控制台中配置的回信地址（状态必须是验证通过）。
         'clickTrace'=>0,//0（默认）：为关闭数据跟踪功能。 1：为打开数据跟踪功能
     ];
 
