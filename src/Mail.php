@@ -171,10 +171,10 @@ class Mail{
         $request->setAccountName($this->config('accountName'));
         $request->setReplyToAddress($this->config('replyToAddress'));
         $request->setAddressType($this->config('addressType'));
+        $request->setClickTrace($this->config('clickTrace'));
 
         $request->setFromAlias($this->from);
         $request->setToAddress($toAddress);
-        $request->setClickTrace($this->clickTrace);
         $request->setTagName($this->tags);
         $request->setHtmlBody($this->body);
         $request->setSubject($this->subject);
