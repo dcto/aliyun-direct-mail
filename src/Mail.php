@@ -2,7 +2,7 @@
 
 namespace Varimax\Aliyun;
 
-require_once('../lib/aliyun-php-sdk-core/Config.php');
+require_once(dirname(__DIR__).'/lib/aliyun-php-sdk-core/Config.php');
 
 use ClientException;
 use Dm\Request\V20151123 as Dm;
@@ -133,6 +133,17 @@ class Mail{
      */
     public function send(...$email)
     {
+        foreach ($email as $key => $value)
+        {
+            if (is_array($value))
+            {
+                $email += array_merge(...array_values($value));
+            }
+            else
+            {
+                $email[$key] = $value;
+            }
+        }
         return $this->singleSend(join(',', $email));
     }
 
