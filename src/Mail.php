@@ -172,18 +172,23 @@ class Mail{
      */
     protected function singleSend($toAddress)
     {
-        $client = new \DefaultAcsClient(\DefaultProfile::getProfile($this->config('regionId'), $this->config('accessKeyId'), $this->config('accessSecret')));
+        $client = new \DefaultAcsClient($DefaultProfile = \DefaultProfile::getProfile($this->config('regionId'), $this->config('accessKeyId'), $this->config('accessSecret')));
         $request = new Dm\SingleSendMailRequest();
         $request->setAccountName($this->config('accountName'));
         $request->setReplyToAddress($this->config('replyToAddress'));
         $request->setAddressType($this->config('addressType'));
         $request->setClickTrace($this->config('clickTrace'));
-
+        
         $request->setFromAlias($this->from);
         $request->setToAddress($toAddress);
         $request->setTagName($this->tags);
         $request->setHtmlBody($this->body);
         $request->setSubject($this->subject);
+
+        if($this->config('regionId') != 'cn-hangzhou'){
+            $request->setVersion("2017-06-22");//新加坡或澳洲region需要设置SDK的版本，华东1（杭州）不需要设置。
+            $DefaultProfile::addEndpoint("ap-southeast-1","ap-southeast-1","Dm","dm.ap-southeast-1.aliyuncs.com");//新加坡或澳洲region需要设置服务器地址，华东1（杭州）不需要设置。
+        }
 
         return $client->getAcsResponse($request);
     }
