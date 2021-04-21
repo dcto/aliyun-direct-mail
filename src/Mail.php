@@ -185,9 +185,9 @@ class Mail{
         $request->setHtmlBody($this->body);
         $request->setSubject($this->subject);
 
-        if($this->config('regionId') != 'cn-hangzhou'){
+        if(($regionId  = $this->config('regionId')) != 'cn-hangzhou'){
             $request->setVersion("2017-06-22");//新加坡或澳洲region需要设置SDK的版本，华东1（杭州）不需要设置。
-            $DefaultProfile::addEndpoint("ap-southeast-1","ap-southeast-1","Dm","dm.ap-southeast-1.aliyuncs.com");//新加坡或澳洲region需要设置服务器地址，华东1（杭州）不需要设置。
+            $DefaultProfile::addEndpoint($regionId,$regionId,"Dm","dm.".$regionId.".aliyuncs.com");//新加坡或澳洲region需要设置服务器地址，华东1（杭州）不需要设置。
         }
 
         return $client->getAcsResponse($request);
